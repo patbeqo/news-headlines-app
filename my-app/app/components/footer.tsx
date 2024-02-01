@@ -7,7 +7,7 @@ export function Footer() {
         </p>
         <ul className="flex space-x-4 text-sm font-medium text-teal-200">
           <li>
-            <a href="#" className="hover:underline">Home</a>
+            <a href="#" className="hover:underline">Trending</a>
           </li>
           <li>
             <a href="#" className="hover:underline">Categories</a>
