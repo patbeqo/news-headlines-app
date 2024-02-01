@@ -8,7 +8,7 @@ export function Header() {
         <a href="/" className="text-teal-200 hover:text-white mr-4">
           Trending
         </a>
-        <a href="#" className="text-teal-200 hover:text-white mr-4">
+        <a href="/categories" className="text-teal-200 hover:text-white mr-4">
           Categories
         </a>
       </div>
