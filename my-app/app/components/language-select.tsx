@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 
 const LANGUAGE_OPTIONS = [
   { value: "ar", label: "Arabic" },
@@ -18,7 +19,7 @@ const LANGUAGE_OPTIONS = [
   { value: "zh", label: "Chinese" },
 ];
 
-export function LanguageSelect() {
+function BaseLanguageSelect() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -41,4 +42,12 @@ export function LanguageSelect() {
       ))}
     </select>
   );
+}
+
+export function LanguageSelect() {
+  return (
+    <Suspense fallback="Loading...">
+      <BaseLanguageSelect />
+    </Suspense>
+  )
 }

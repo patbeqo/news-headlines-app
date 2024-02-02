@@ -1,6 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from "next/navigation";
+import { Suspense } from "react";
 
 const CATEGORY_OPTIONS = [
   {
@@ -33,7 +34,7 @@ const CATEGORY_OPTIONS = [
   }
 ]
 
-export function CategorySelector() {
+function BaseCategorySelector() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -58,3 +59,10 @@ export function CategorySelector() {
   );
 }
 
+export function CategorySelector() {
+  return (
+    <Suspense fallback="Loading...">
+      <BaseCategorySelector />
+    </Suspense>
+  )
+}
