@@ -44,12 +44,12 @@ export function InfiniteScrollArticles({
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4 m-16">
+    <div className="md:grid md:grid-cols-4 gap-4 m-16">
       {articles.map(
         ({ author, title, url, publishedAt, urlToImage }: IArticle) => (
           <div
             key={url}
-            className="max-w-md rounded overflow-hidden shadow-lg bg-white flex flex-col justify-between"
+            className="mb-4 max-w-md rounded overflow-hidden shadow-lg bg-white flex flex-col justify-between"
           >
             <div>
               {urlToImage ? (
