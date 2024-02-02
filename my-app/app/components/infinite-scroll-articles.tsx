@@ -12,7 +12,7 @@ export interface IArticle {
 }
 
 interface IIfiniteScrollArticlesProps {
-  articles: IArticle[];
+  articles?: IArticle[];
   url: string;
 }
 
@@ -21,7 +21,7 @@ export function InfiniteScrollArticles({
   url
 }: IIfiniteScrollArticlesProps) {
   const [page, setPage] = React.useState(1);
-  const [articles, setArticles] = React.useState<IArticle[]>(initialArticles);
+  const [articles, setArticles] = React.useState<IArticle[]>(initialArticles || []);
 
   const [reachedEnd, setReachedEnd] = React.useState(false);
 
@@ -40,12 +40,12 @@ export function InfiniteScrollArticles({
   }
 
   if (articles.length === 0) {
-    return <div className="text-red-500 text-center">No articles found. Try selecting a different language. </div>;
+    return <div className="text-red-500 text-center">No articles found. Try selecting a different language or category. </div>;
   }
 
   return (
     <div className="md:grid md:grid-cols-4 gap-4 m-16">
-      {articles.map(
+      {articles.filter(({ author }: IArticle) => author).map(
         ({ author, title, url, publishedAt, urlToImage }: IArticle) => (
           <div
             key={url}

@@ -11,13 +11,12 @@ export default async function FilterByCategory({ searchParams }: IHomeProps) {
   const url = `https://newsapi.org/v2/top-headlines?apiKey=${process.env.API_KEY}&language=${selectedLanguage}&category=${selectedCategory}`
   const data = await fetch(url);
   const topHeadlines = await data.json();
-  const filteredArticles = topHeadlines.articles.filter(({ author }: IArticle) => author);
 
   return (
     <div className="flex flex-col">
       <h1 className="text-3xl font-bold text-center text-cyan-600 my-8">Filter By Category</h1>
       <CategorySelector />
-      <InfiniteScrollArticles key={`${selectedLanguage}-${selectedCategory}`} articles={filteredArticles} url={url} />
+      <InfiniteScrollArticles key={`${selectedLanguage}-${selectedCategory}`} articles={topHeadlines.articles} url={url} />
     </div>
   );
 }
