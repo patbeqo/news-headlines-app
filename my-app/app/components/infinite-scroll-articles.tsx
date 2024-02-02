@@ -1,4 +1,7 @@
-// "use client";
+"use client";
+
+import React from "react";
+import { Loader } from "./loader";
 
 export interface IArticle {
   author: string;
@@ -10,11 +13,31 @@ export interface IArticle {
 
 interface IIfiniteScrollArticlesProps {
   articles: IArticle[];
+  url: string;
 }
 
 export function InfiniteScrollArticles({
-  articles,
+  articles: initialArticles,
+  url
 }: IIfiniteScrollArticlesProps) {
+  const [page, setPage] = React.useState(1);
+  const [articles, setArticles] = React.useState<IArticle[]>(initialArticles);
+
+  const [reachedEnd, setReachedEnd] = React.useState(false);
+
+  const loadMoreArticles = async () => {
+    const nextPage = page + 1;
+    const response = await fetch(url + `&page=${nextPage}`);
+    const data = await response.json();
+
+    if (!data.articles || data.articles.length === 0) {
+      setReachedEnd(true);
+      return;
+    }
+
+    setArticles((prevArticles) => [...prevArticles, ...data.articles]);
+    setPage(nextPage);
+  }
 
   if (articles.length === 0) {
     return <div className="text-red-500 text-center">No articles found. Try selecting a different language. </div>;
@@ -33,7 +56,7 @@ export function InfiniteScrollArticles({
                 // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={urlToImage}
-                  alt="News Image"
+                  alt="News Article Image"
                   width={500}
                   height={500}
                 />
@@ -57,6 +80,7 @@ export function InfiniteScrollArticles({
           </div>
         )
       )}
+      {!reachedEnd ? <Loader loadMore={loadMoreArticles} /> : null}
     </div>
   );
 }
