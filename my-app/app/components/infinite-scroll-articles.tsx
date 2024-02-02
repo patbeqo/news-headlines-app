@@ -21,7 +21,7 @@ export function InfiniteScrollArticles({
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4 mx-16">
+    <div className="grid grid-cols-4 gap-4 m-16">
       {articles.map(
         ({ author, title, url, publishedAt, urlToImage }: IArticle) => (
           <div
@@ -51,11 +51,9 @@ export function InfiniteScrollArticles({
                 </p>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <a href={url} className="text-blue-500">
-                Read more
-              </a>
-            </div>
+            <a href={url} className="text-blue-500 px-6 py-4">
+              Read more
+            </a>
           </div>
         )
       )}

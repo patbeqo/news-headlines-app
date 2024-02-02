@@ -1,4 +1,4 @@
-import { IArticle, InfiniteScrollArticles } from "./components/infinit-scroll-articles";
+import { IArticle, InfiniteScrollArticles } from "./components/infinite-scroll-articles";
 
 interface IHomeProps {
   searchParams: { [key: string]: string | string[] | undefined };
