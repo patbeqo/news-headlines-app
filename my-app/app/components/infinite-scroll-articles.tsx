@@ -44,7 +44,7 @@ export function InfiniteScrollArticles({
   }
 
   return (
-    <div className="md:grid md:grid-cols-4 gap-4 m-16">
+    <div className="md:grid md:grid-cols-4 gap-4 my-16">
       {articles.filter(({ author }: IArticle) => author).map(
         ({ author, title, url, publishedAt, urlToImage }: IArticle) => (
           <div
@@ -52,15 +52,12 @@ export function InfiniteScrollArticles({
             className="mb-4 max-w-md rounded overflow-hidden shadow-lg bg-white flex flex-col justify-between"
           >
             <div>
-              {urlToImage ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={urlToImage}
-                  alt="News Article Image"
-                  width={500}
-                  height={500}
-                />
-              ) : null}
+              <img
+                src={urlToImage || '/dummy-image.jpg'}
+                alt="News Article Image"
+                width={500}
+                height={500}
+              />
               <div className="px-6 py-4">
                 <div className="font-bold text-md mb-2">{title}</div>
                 <p className="text-gray-700 text-base">{author}</p>
