@@ -1,1 +1,0 @@
-# xe-techinical-test-news-headlines-app
