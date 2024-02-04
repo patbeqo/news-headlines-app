@@ -1,3 +1,5 @@
+Deployed at https://news-headlines-app.vercel.app/
+
 Make sure to include your News API key in your environment variables (API_KEY="YOUR_API_KEY")
 https://newsapi.org
 
