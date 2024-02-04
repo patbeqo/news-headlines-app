@@ -46,7 +46,7 @@ function BaseCategorySelector() {
 
   return (
     <select
-      className="p-2 bg-white rounded-md border-2 border-gray-300 text-black w-full mx-auto sm:w-1/4"
+      className="p-2 bg-white rounded-md border-2 border-gray-300 text-black h-12 w-full mx-auto sm:w-1/4"
       onChange={handleChange}
       defaultValue={searchParams.get("category") || "general"}
     >
