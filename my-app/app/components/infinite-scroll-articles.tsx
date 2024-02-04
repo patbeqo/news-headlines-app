@@ -64,7 +64,7 @@ export function InfiniteScrollArticles({
                   src={urlToImage || "/dummy-image.jpg"}
                   alt="News Article Image"
                   onClick={() => window.open(url, "_blank")}
-                  className="cursor-pointer"
+                  className="cursor-pointer object-cover w-full h-60"
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-md mb-2">{title}</div>
